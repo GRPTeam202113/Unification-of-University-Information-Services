@@ -12,7 +12,7 @@
   - [Minutes of Meetings](#MinutesOfMeetings)
 - [Project Directory](#ProjectDirectory)
 - [Technology](#Technology)
-  - [Correlation Techniques](#Correlation Techniques)
+  - [Correlation Techniques](#CorrelationTechniques)
 - [Browsers Support](#BrowsersSupport)
 - [Contact](#Contact)
 - [Acknowledgements](#Acknowledgements)
@@ -127,7 +127,7 @@ Describe briefly what was done
 
 Html5 + Css + Javascript + vue + C + Java + Python + ...
 
-#### <span id = "Correlation Techniques">Correlation Techniques</span>
+#### <span id = "CorrelationTechniques">Correlation Techniques</span>
 
 - WebScraping
 - AutomaticExtractionofHierarchicalRelations
