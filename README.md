@@ -1,45 +1,96 @@
-# GRPTeam202113
-Hello, welcome to the homepage of GRPTeam202113.
+# GRPTeam202113_Unification-of-University-Information-Services
+Hello, welcome to the homepage of GRPTeam202113_Unification-of-University-Information-Services projects
 
 ### Catalogue
 
 [TOC]
 
-
-
 ### Introduction
 
-In fact, the project has not decided yet, so we can only introduce our team right now. More details of our project will be uploaded later.
+This project is to produce a web‐based system, through the application of standard Software Engineering (SE) and Human‐Computer Interaction (HCI) methodologies,  using suitable technologies to better support staff/student workflows at UNNC. The final system will work well on a variety of platforms of various form factors. (e.g., laptop, tablet, and phones)
 
-### Contributors
+For more information, you can refer to the [bid documentation](docs/bid/GRP_G13_bid3_14(Modified).pdf). 
 
-| Self-CV | Name        |
-| ------- | ----------- |
-|         | Haonan CHEN |
-|         | Luke GAO    |
-|         | Yongjing QI |
-| Stephen | Yifei SHAO  |
-|         | Zhihang ZHU |
 
-### Version
 
-| Version | Release Date | Abstract                            |
-| ------- | ------------ | ----------------------------------- |
-| v0.0.0  | 2021/10/04   | create repositor, do a brief intro. |
+### <span id = "anchor_contributors">Contributors</span>
+
+| Self-CV                                         | Name        | Email                    |
+| ----------------------------------------------- | ----------- | ------------------------ |
+| [Troy](docs/selfCV/PersonalCV_Haonan CHEN.pdf)  | Haonan CHEN | scyhc4@nottingham.edu.cn |
+|                                                 | Luke GAO    | scyyg3@nottingham.edu.cn |
+| [Heidi](docs/selfCV/PersonalCV_YongjingQi.pdf)  | Yongjing QI | scyyq1@nottingham.edu.cn |
+| [Stephen](docs/selfCV/PersonalCV_YifeiShao.pdf) | Yifei SHAO  | scyys7@nottingham.edu.cn |
+|                                                 | Zhihang ZHU | scyzz6@nottingham.edu.cn |
 
 
 
 ### Getting started
 
-```
-# clone the project
-git clone https://github.com/YifeiShao7/GRPTeam202113.git
+- clone the project 
 
-# enter the project directory
-cd GRPTeam202113
-```
+<b>`git clone https://github.com/GRPTeam202113/Unification-of-University-Information-Services.git`</b>
 
-### Project directory (In fact there is nothing in the repository, updating when the project is certain)
+- enter the project directory from local device
+
+<B>`cd Unification-of-University-Information-Services`</B>
+
+
+
+### Commit Style
+
+`<type>(<scope>): <subject>`
+
+Where type and subject are required parts, Note that the space after the colon, "<>" is not needed in practice, for example
+
+`docs(README): fix grammar`
+
+`fix(Main): fix function call`
+
+<B>type</B>
+
+To describe the types of commit, there are seven types
+
+- **feat**: new features
+- **fix**: fixing problem and bug
+- **docs**: document type，like update READNE，template，minutes of the meeting, etc
+- **style**: Just changing the format has no other impact
+- **refacto**r:Refactoring, not adding, not modifyingbug
+- **test**: Adding Test
+- **chore**: Changes to the build process or ancillary tools
+
+<B>scope（can be ignord）</B>
+
+Used to describe the scope of the commit impact
+
+-  Could be a Java class or something
+
+**subject**
+
+Describe briefly what was done
+
+- Verb beginning, first person singular simple present tense, eg: add, change
+- Lowercase letter
+- End with no period
+
+
+
+### Documentations
+
+#### Version Log
+
+| Version | Release Date | Abstract                                                     |
+| ------- | ------------ | ------------------------------------------------------------ |
+| v0.0.0  | 2021/10/04   | create repository, do a brief intro.                         |
+| v0.0.1  | 2021/10/15   | fork from v0.0.0 repository after project determined, change and perfect information |
+
+#### [Minutes of Meetings]((docs/minutesOfMeeting/minutesOfMeeting.md))
+
+
+
+### Project directory 
+
+(In fact there is nothing in the repository, updating further
 
 .
 ├── build
@@ -56,13 +107,23 @@ cd GRPTeam202113
 
 
 
-### Technology (will update when project is certain)
+### Technology 
+
+(will update further)
 
 Html5 + Css + Javascript + vue + C + Java + Python + ...
 
+#### Correlation Techniques
 
+- WebScraping
+- AutomaticExtractionofHierarchicalRelations
+- DataVisualisation
+- User‐ExperienceEvaluation
+- Web‐Technologies
 
-### Browsers support (will update when project is certain)
+### Browsers support 
+
+(will update further)
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Safari |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -72,15 +133,14 @@ Html5 + Css + Javascript + vue + C + Java + Python + ...
 
 ### Contact
 
-If you have any question, please send e-mail to :scyys7@nottingham.edu.cn
+If you have any question, please send e-mail to our  [contributors](#anchor_contributors)
 
-or contact wechat by :F-Y-S-2020
-
-Project Link: https://github.com/YifeiShao7/GRPTeam202113.git
+Project Link: https://github.com/GRPTeam202113/Unification-of-University-Information-Services.git
 
 ### Acknowledgements
 
 Use the space to list those who we find helpful and would like to give credit to.
 
 * Module Convenor: Towney Dave
-* The Supervisor who choosed our group: <u>please sign in your name</u>
+* Supervisor of the group: Matthew Pike
+
