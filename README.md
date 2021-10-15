@@ -147,7 +147,7 @@ Html5 + Css + Javascript + vue + C + Java + Python + ...
 
 ### <span id = "Contact">Contact</span>
 
-If you have any question, please send e-mail to our  [contributors](#anchor_contributors)
+If you have any question, please send e-mail to our  [contributors](#Contributors)
 
 Project Link: https://github.com/GRPTeam202113/Unification-of-University-Information-Services.git
 
