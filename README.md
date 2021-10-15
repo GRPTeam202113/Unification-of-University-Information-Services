@@ -1,11 +1,25 @@
 # GRPTeam202113_Unification-of-University-Information-Services
-Hello, welcome to the homepage of GRPTeam202113_Unification-of-University-Information-Services projects
+ Hello!  welcome to the homepage of GRPTeam202113_Unification-of-University-Information-Services projects  ❤
 
 ### Catalogue
 
-[TOC]
+- [Introduction](#Introduction)
+- [Contributors](#Contributors)
+- [Getting Started](#GettingStarted)
+- [Commit Style](#CommitStyle)
+- [Documentations](#Documentations)
+  - [Version Log](#VersionLog)
+  - [Minutes of Meetings](#MinutesOfMeetings)
+- [Project Directory](#ProjectDirectory)
+- [Technology](#Technology)
+  - [Correlation Techniques](#Correlation Techniques)
+- [Browsers Support](#BrowsersSupport)
+- [Contact](#Contact)
+- [Acknowledgements](#Acknowledgements)
 
-### Introduction
+
+
+### <span id = "Introduction">Introduction</span>
 
 This project is to produce a web‐based system, through the application of standard Software Engineering (SE) and Human‐Computer Interaction (HCI) methodologies,  using suitable technologies to better support staff/student workflows at UNNC. The final system will work well on a variety of platforms of various form factors. (e.g., laptop, tablet, and phones)
 
@@ -13,7 +27,7 @@ For more information, you can refer to the [bid documentation](docs/bid/GRP_G13_
 
 
 
-### <span id = "anchor_contributors">Contributors</span>
+### <span id = "Contributors">Contributors</span> 👦👦👦 🧒🧒
 
 | Self-CV                                         | Name        | Email                    |
 | ----------------------------------------------- | ----------- | ------------------------ |
@@ -25,7 +39,7 @@ For more information, you can refer to the [bid documentation](docs/bid/GRP_G13_
 
 
 
-### Getting started
+### <span id = "GettingStarted">Getting started</span>
 
 - clone the project 
 
@@ -37,7 +51,7 @@ For more information, you can refer to the [bid documentation](docs/bid/GRP_G13_
 
 
 
-### Commit Style
+### <span id = "CommitStyle">Commit Style</span>
 
 `<type>(<scope>): <subject>`
 
@@ -75,20 +89,20 @@ Describe briefly what was done
 
 
 
-### Documentations
+### <span id = "Documentations">Documentations</span>
 
-#### Version Log
+#### <span id = "VersionLog">Version Log</span>
 
 | Version | Release Date | Abstract                                                     |
 | ------- | ------------ | ------------------------------------------------------------ |
 | v0.0.0  | 2021/10/04   | create repository, do a brief intro.                         |
 | v0.0.1  | 2021/10/15   | fork from v0.0.0 repository after project determined, change and perfect information |
 
-#### [Minutes of Meetings](docs/minutesOfMeeting/minutesOfMeeting.md)
+#### <span id = "MinutesOfMeetings">[Minutes of Meetings](docs/minutesOfMeeting/minutesOfMeeting.md)</span>
 
 
 
-### Project directory 
+### <span id = "ProjectDirectory">Project directory </span>
 
 (In fact there is nothing in the repository, updating further
 
@@ -107,13 +121,13 @@ Describe briefly what was done
 
 
 
-### Technology 
+### <span id = "Technology">Technology </span>
 
 (will update further)
 
 Html5 + Css + Javascript + vue + C + Java + Python + ...
 
-#### Correlation Techniques
+#### <span id = "Correlation Techniques">Correlation Techniques</span>
 
 - WebScraping
 - AutomaticExtractionofHierarchicalRelations
@@ -121,7 +135,7 @@ Html5 + Css + Javascript + vue + C + Java + Python + ...
 - User‐ExperienceEvaluation
 - Web‐Technologies
 
-### Browsers support 
+### <span id = "BrowsersSupport">Browsers support </span>
 
 (will update further)
 
@@ -131,13 +145,13 @@ Html5 + Css + Javascript + vue + C + Java + Python + ...
 
 
 
-### Contact
+### <span id = "Contact">Contact</span>
 
 If you have any question, please send e-mail to our  [contributors](#anchor_contributors)
 
 Project Link: https://github.com/GRPTeam202113/Unification-of-University-Information-Services.git
 
-### Acknowledgements
+### <span id = "Acknowledgements">Acknowledgements</span>
 
 Use the space to list those who we find helpful and would like to give credit to.
 
