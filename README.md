@@ -156,6 +156,6 @@ Project Link: https://github.com/GRPTeam202113/Unification-of-University-Informa
 
 Use the space to list those who we find helpful and would like to give credit to.
 
-* Module Convenor: Towney Dave
-* Supervisor of the group: Matthew Pike
+* Module Convenor: Dave Towey
+* Supervisor of the group: Matthew Pike 
 
