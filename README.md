@@ -10,6 +10,7 @@
 - [Documentations](#Documentations)
   - [Version Log](#VersionLog)
   - [Minutes of Meetings](#MinutesOfMeetings)
+  - [Agenda of Meetings](#meetingAgenda)
 - [Project Directory](#ProjectDirectory)
 - [Technology](#Technology)
   - [Correlation Techniques](#CorrelationTechniques)
@@ -100,7 +101,7 @@ Describe briefly what was done
 
 #### <span id = "MinutesOfMeetings">[Minutes of Meetings](docs/minutesOfMeeting/minutesOfMeeting.md)</span>
 
-
+#### <span id = "meetingAgenda">[Agenda of Meetings](docs/meetingAgenda/meetingAgenda.md)</span>
 
 ### <span id = "ProjectDirectory">Project directory </span>
 
