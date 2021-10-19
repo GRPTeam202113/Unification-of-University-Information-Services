@@ -32,7 +32,7 @@ For more information, you can refer to the [bid documentation](docs/bid/GRP_G13_
 | Self-CV                                         | Name        | Email                    |
 | ----------------------------------------------- | ----------- | ------------------------ |
 | [Troy](docs/selfCV/PersonalCV_HaonanCHEN.pdf)   | Haonan CHEN | scyhc4@nottingham.edu.cn |
-|                                                 | Luke GAO    | scyyg3@nottingham.edu.cn |
+|                                                 | Yuke GAO    | scyyg3@nottingham.edu.cn |
 | [Heidi](docs/selfCV/PersonalCV_YongjingQi.pdf)  | Yongjing QI | scyyq1@nottingham.edu.cn |
 | [Stephen](docs/selfCV/PersonalCV_YifeiShao.pdf) | Yifei SHAO  | scyys7@nottingham.edu.cn |
 |                                                 | Zhihang ZHU | scyzz6@nottingham.edu.cn |
