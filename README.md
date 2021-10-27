@@ -99,6 +99,8 @@ Describe briefly what was done
 | v0.0.0  | 2021/10/04   | create repository, do a brief intro.                         |
 | v0.0.1  | 2021/10/15   | fork from v0.0.0 repository after project determined, change and perfect information |
 
+#### <span id = "Journal">[Weekly Journal](docs/Journal/Journal.md)</span>
+
 #### <span id = "MinutesOfMeetings">[Minutes of Meetings](docs/minutesOfMeeting/minutesOfMeeting.md)</span>
 
 #### <span id = "meetingAgenda">[Agenda of Meetings](docs/meetingAgenda/meetingAgenda.md)</span>
