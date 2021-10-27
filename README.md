@@ -9,6 +9,7 @@
 - [Commit Style](#CommitStyle)
 - [Documentations](#Documentations)
   - [Version Log](#VersionLog)
+  - [Weekly Journal](#Journal)
   - [Minutes of Meetings](#MinutesOfMeetings)
   - [Agenda of Meetings](#meetingAgenda)
 - [Project Directory](#ProjectDirectory)
