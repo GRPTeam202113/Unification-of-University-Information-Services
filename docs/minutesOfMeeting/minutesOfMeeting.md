@@ -5,5 +5,5 @@
 | 3      | Informal | Week6 | 2021.10.18      | [Week6_MInute1](20211018_Week6_Minute1.pdf)                  |
 | 4      | Formal   | Week6 | 2021.10.19      | [Week6_Minute2](20211019_Week6_FormalMeeting_Minute1.pdf)    |
 | 5      | Formal   | Week6 | 2021.10.21      | [Week6_Minute3](20211021_Week6_Formal_Meeting_Minute1.pdf)   |
-| 6      | Informal | Week7 | 2021.10.24      | [Week7_Minute4](20211024_Week7_Informal_Meeting_Minute1.pdf) |
+| 6      | Informal | Week7 | 2021.10.24      | [Week7_Minute1](20211024_Week7_Informal_Meeting_Minute1.pdf) |
 
