@@ -14,11 +14,12 @@
 
 ##### 2.  In ethic part, Haonan submitted ethics full list; Yongjing created the participant-information-sheet.
 
-##### 3. Yifei and Yongjing designed on Prototype.
+##### 3. Yifei and Yongjing designed on Prototype, Yongjing create the prototype.
 
 ##### 4. Yuke arranged the Persona.
 
 ##### 5. Haonan arranged on Meeting Minutes.
+##### 6. Yongjing arrange the normal git management.
 
 #### Next Week:
 
