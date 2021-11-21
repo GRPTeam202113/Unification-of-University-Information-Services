@@ -15,6 +15,7 @@
 - [Project Directory](#ProjectDirectory)
 - [Project Documentation](#ProjectDocumentation)
   - [Requirements](#Requirements)
+  - [Interim Report](#InterimReport)
 - [Technology](#Technology)
   - [Correlation Techniques](#CorrelationTechniques)
 - [Browsers Support](#BrowsersSupport)
@@ -131,11 +132,19 @@ Describe briefly what was done
 
 #### <span id = "Requirements">Requirements</span>
 
-| Requirements Documentation                                   |
-| ------------------------------------------------------------ |
-| [Interview to gather requirements](docs/ProjectDocumentation/Requirements/Interview/Interview.md) |
-| [Persona](docs/ProjectDocumentation/Requirements/Persona/Persona.md) |
-| [Prototype](docs/ProjectDocumentation/Requirements/Prototype/Prototype.md) |
+| Requirements Documentation                                   | Description |
+| ------------------------------------------------------------ | ----------- |
+| [Interview to gather requirements](docs/ProjectDocumentation/Requirements/Interview/Interview.md) |             |
+| [Persona](docs/ProjectDocumentation/Requirements/Persona/Persona.md) |             |
+| [Prototype](docs/ProjectDocumentation/Requirements/Prototype/Prototype.md) |             |
+
+#### <span id="InterimReport">Interim Report</span>
+
+| Interim Report Documentation                                 | Description |
+| ------------------------------------------------------------ | ----------- |
+| [Report Structure MindMap](docs/ProjectDocumentation/InterimReport/20211103InterimReport Overview.pdf) |             |
+| [Task Allocation](docs/ProjectDocumentation/InterimReport/20211103TaskAllocationInterimReport Overview.pdf) |             |
+| [Report Template](docs/ProjectDocumentation/InterimReport/Template.pdf) |             |
 
 
 
