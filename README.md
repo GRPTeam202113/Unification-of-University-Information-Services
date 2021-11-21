@@ -142,8 +142,8 @@ Describe briefly what was done
 
 | Interim Report Documentation                                 | Description |
 | ------------------------------------------------------------ | ----------- |
-| [Report Structure MindMap](docs/ProjectDocumentation/InterimReport/20211103InterimReport Overview.pdf) |             |
-| [Task Allocation](docs/ProjectDocumentation/InterimReport/20211103TaskAllocationInterimReport Overview.pdf) |             |
+| [Report Structure MindMap](docs/ProjectDocumentation/InterimReport/20211103InterimReportOverview.pdf) |             |
+| [Task Allocation](docs/ProjectDocumentation/InterimReport/20211103TaskAllocationInterimReportOverview.pdf) |             |
 | [Report Template](docs/ProjectDocumentation/InterimReport/Template.pdf) |             |
 
 
