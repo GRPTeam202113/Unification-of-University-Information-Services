@@ -16,7 +16,7 @@
 | 14     | Formal   | Week9  | 2021.11.11      | [Week9_Minute2](20211111_Formal_Meeting_Week9_Minute2.pdf)   |
 | 15     | Informal | Week9  | 2021.11.11      | [Week9_Minute3](20211111_Informal_Meeting_Week9_Minute3.pdf) |
 | 16     | Informal | Week10 | 2021.11.16      | [Week10_Minute1](20211116_Informal_Meeting_Week10_Minute1.pdf) |
-|        |          |        |                 |                                                              |
-|        |          |        |                 |                                                              |
-|        |          |        |                 |                                                              |
+| 17     |          |        |                 |                                                              |
+| 18     |          |        |                 |                                                              |
+| 19     | Informal | Week11 | 2021.11.15      | [Week11_Minute3](20211125_Informal_meeting.pdf)              |
 
