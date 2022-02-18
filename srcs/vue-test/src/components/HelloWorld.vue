@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-carousel :interval="5000" type="card" height="500px">
+  <el-carousel :interval="5000" type="card" height="400px">
   <el-carousel-item v-for="item in images" :key="item">
     <img :src="item.url" alt="无图片"/>
   </el-carousel-item>
@@ -13,7 +13,7 @@
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
       <el-card class="box-card" shadow="hover">
-        <span><h2>Centre for English Language Education</h2></span>
+        <div class="subTitle"><span>Centre for English Language Education</span></div><br>
         <div class="introduction">{{ celeIntro }}</div>
         <br><br>
         <div style="padding: 14px;">
@@ -25,7 +25,7 @@
     </el-col>
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
-      <el-card :body-style="{ padding: '20px'}" el-card shadow="hover">
+      <el-card :body-style="{ padding: '20px'}" el-card shadow="always">
         <img src="../assets/Faculty/cele.jpg" class="image">
       </el-card>
     </el-col>
@@ -35,7 +35,7 @@
   <el-row>
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
-      <el-card :body-style="{ padding: '20px'}" el-card shadow="hover">
+      <el-card :body-style="{ padding: '20px'}" el-card shadow="always">
         <img src="../assets/Faculty/fob.jpg" class="image">
       </el-card>
     </el-col>
@@ -43,9 +43,9 @@
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
       <el-card class="box-card" shadow="hover">
-        <span><h2>Faculty of Business</h2></span>
+        <div class="subTitle"><span>Faculty of Business</span></div><br>
         <div class="introduction">{{ fobIntro }}</div>
-        <br><br><br><br><br>
+        <br><br><br><br>
         <div style="padding: 14px;">
             <div class="bottom clearfix">
               <el-button class="learnMoreButton" icon="el-icon-right"><router-link to="/fob">Learn More</router-link></el-button>
@@ -59,7 +59,7 @@
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
       <el-card class="box-card" shadow="hover">
-        <span><h2>Faculty of Humanities and Social Sciences</h2></span>
+        <div class="subTitle"><span>Faculty of Humanities and Social Sciences</span></div><br>
         <div class="introduction">{{ fhssIntro }}</div>
         <br>
         <div style="padding: 14px;">
@@ -71,7 +71,7 @@
     </el-col>
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
-      <el-card :body-style="{ padding: '20px'}" el-card shadow="hover">
+      <el-card :body-style="{ padding: '20px'}" el-card shadow="always">
         <img src="../assets/Faculty/fhss.jpg" class="image">
       </el-card>
     </el-col>
@@ -81,7 +81,7 @@
   <el-row>
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
-      <el-card :body-style="{ padding: '20px'}" el-card shadow="hover">
+      <el-card :body-style="{ padding: '20px'}" el-card shadow="always">
         <img src="../assets/Faculty/fose.jpg" class="image">
       </el-card>
     </el-col>
@@ -89,9 +89,9 @@
     <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
     <el-col :span="10">
       <el-card class="box-card" shadow="hover">
-        <span><h2>Faculty of Science and Engineering</h2></span>
-        <div class="introduction">{{ celeIntro }}</div>
-        <br><br>
+        <div class="subTitle"><span>Faculty of Science and Engineering</span></div><br>
+        <div class="introduction">{{ foseIntro }}</div>
+        <br>
         <div style="padding: 14px;">
             <div class="bottom clearfix">
               <el-button class="learnMoreButton" icon="el-icon-right"><router-link to="/fose">Learn More</router-link></el-button>
@@ -116,7 +116,8 @@ export default {
           {url: require('../assets/MainBackGround4.jpg')}],
       celeIntro: 'We are one of the largest and most well-established English language teaching departments in the world.',
       fobIntro: 'We offer business programmes at undergraduate, postgraduate and executive levels.',
-      fhssIntro: 'Programmes on Economics, Education and English, International Communications, and International Studies from undergraduate to postgraduate level.'
+      fhssIntro: 'Programmes on Economics, Education and English, International Communications, and International Studies from undergraduate to postgraduate level.',
+      foseIntro: 'Our reputation for excellence in engineering rests on the highest standards of teaching and learning, underpinned by internationally leading research.'
     }
   }
 }
@@ -153,10 +154,8 @@ export default {
   margin-left: 45%;
   margin-right: 15%;
 }
-.celeTitle {
-  margin-left: 5%;
-  margin-bottom: 350px;
-  font-size: 30px;
+.subTitle {
+  font-size: 40px;
   font-weight: bolder;
 }
 .introduction{
@@ -175,7 +174,7 @@ export default {
   }
 .title {
     margin-left: 30px;
-    font-size: 70px;
+    font-size: 50px;
     font-weight: bold;
     color: rgb(0, 0, 0);
   }

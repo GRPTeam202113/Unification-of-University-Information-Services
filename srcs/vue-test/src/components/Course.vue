@@ -46,17 +46,17 @@
 
 <script>
 export default {
-    name:'course',
-    data(){
-        return{
-            degree:'BSc (Hons) Computer Science',
-            typeOfStudy:'Full Year',
-            duration:'Three or four years depending on entry qualifications',
-            startDate:'September 2022',
-            faculty:'Computer Science / Faculty of Science and Engineering',
-            studyModel:'2+2, 4+0',
+    name: 'course',
+    data() {
+        return {
+            degree: 'BSc (Hons) Computer Science',
+            typeOfStudy: 'Full Year',
+            duration: 'Three or four years depending on entry qualifications',
+            startDate: 'September 2022',
+            faculty: 'Computer Science / Faculty of Science and Engineering',
+            studyModel: '2+2, 4+0',
             // newline for courseContent should add <br>*2 in the source
-            courseContent:'This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!',
+            courseContent: 'This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!'
         }
     }
 }

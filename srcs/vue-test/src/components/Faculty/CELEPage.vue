@@ -353,7 +353,7 @@
 .title {
     margin-left: 20px;
     margin-top: 0px;
-    font-size: 70px;
+    font-size: 50px;
 }
 .introduction {
     margin-left: 600px;

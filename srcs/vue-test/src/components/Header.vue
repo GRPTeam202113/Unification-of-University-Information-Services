@@ -18,15 +18,11 @@
                         <el-menu-item index="2">Search</el-menu-item>
                         <el-submenu index="3">
                             <template slot="title">More</template>
-                            <el-menu-item index="2-1">选项1</el-menu-item>
-                            <el-menu-item index="2-2">选项2</el-menu-item>
-                            <el-menu-item index="2-3">选项3</el-menu-item>
-                            <el-submenu index="2-4">
-                            <template slot="title">选项4</template>
-                            <el-menu-item index="2-4-1">选项1</el-menu-item>
-                            <el-menu-item index="2-4-2">选项2</el-menu-item>
-                            <el-menu-item index="2-4-3">选项3</el-menu-item>
-                            </el-submenu>
+                            <el-menu-item index="2-1"><el-link href="https://www.nottingham.edu.cn/en/index.aspx" target="_blank">UNNC</el-link></el-menu-item>
+                            <el-menu-item index="2-2"><el-link href="https://moodle.nottingham.ac.uk/login/index.php" target="_blank">Moodle</el-link></el-menu-item>
+                            <el-menu-item index="2-3"><el-link href="https://bluecastle-cn.nottingham.ac.uk/" target="_blank">Blue Castle</el-link></el-menu-item>
+                            <el-menu-item index="2-3"><el-link href="http://email.nottingham.edu.cn/" target="_blank">Email</el-link></el-menu-item>
+                            <el-menu-item index="2-3"><el-link href="https://hub.nottingham.ac.uk/" target="_blank">MyNottinghamHub </el-link></el-menu-item>
                         </el-submenu>
                     </el-menu>
                 </div>

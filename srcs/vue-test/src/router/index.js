@@ -5,8 +5,8 @@ import cele from '@/components/Faculty/CELEPage'
 import fose from '@/components/Faculty/FoSEPage'
 import fob from '@/components/Faculty/FoBPage'
 import fhss from '@/components/Faculty/FHSSPage'
-import course from '@/components/Course'
 import module from '@/components/Module'
+import course from '@/components/Course'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -36,12 +36,12 @@ const routes = [
     component: fhss
   },
   {
-    path: '/Course',
-    component: course
+    path: '/Module',
+    component: module
   },
   {
-    path:'/Module',
-    component: module
+    path: '/Course',
+    component: course
   }
 ]
 
