@@ -7,6 +7,7 @@ import fob from '@/components/Faculty/FoBPage'
 import fhss from '@/components/Faculty/FHSSPage'
 import module from '@/components/Module'
 import course from '@/components/Course'
+import search from '@/components/Search'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
@@ -42,6 +43,10 @@ const routes = [
   {
     path: '/Course',
     component: course
+  },
+  {
+    path: '/Search',
+    component: search
   }
 ]
 
