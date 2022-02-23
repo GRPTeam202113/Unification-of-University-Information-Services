@@ -391,8 +391,7 @@
     font-weight: bolder;
     width:100%;
 }
-</style>
-<style>
+
 .searchCascader {
     background-color: #F7F7F8;
 }

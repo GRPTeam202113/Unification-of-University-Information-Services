@@ -36,10 +36,111 @@
             <div style="position: relative;">
                 <img class="square" src="../assets/square.png" alt="">
                 <span class="squareTitle">
-                    <div class="normalTitle"> Course structure</div>
+                    <div class="normalTitle">Course structure</div>
                 </span>
             </div>
-            <div class="course-content">{{courseContent}}</div>
+            <!-- <div class="course-content">{{courseContent}}</div> -->
+            <br><br>
+            <el-collapse v-model="activeSemesterEnglish" @change="handleChange" style="width:90%;margin-left:50px">
+            <el-collapse-item name="y1">
+                <template slot="title">
+                    <div class = "foldPanel">Year 1</div>
+                </template>
+                <span class="info-content">The preliminary year is designed to help you develop your English language skills so that you can make the most of your degree programme.</span>
+                <br><br>
+                <span class="info-content">This special English language programme designed by the English for Academic Purposes experts at the University's </span>
+                <router-link to="/cele" class="info-content">Centre for English Language Education</router-link>
+                <span class="info-content"> is carefully integrated with academic content modules so that you are prepared fully for years two to four of your degree programme.</span>
+            </el-collapse-item><br><br>
+            <el-collapse-item name="y2">
+                <template slot="title">
+                    <div class = "foldPanel">Year 2</div>
+                </template>
+                <el-table
+                    :data="y2Module"
+                    height="500"
+                    border
+                    style="width: 100%">
+                    <el-table-column
+                    prop="Moduletitle"
+                    label="Module Title"
+                    width="400">
+                    </el-table-column>
+                    <el-table-column
+                    prop="Modulecode"
+                    label="Module Code"
+                    width="280">
+                    </el-table-column>
+                    <el-table-column
+                    prop="credit"
+                    label="Credites"
+                    width="150">
+                    </el-table-column>
+                    <el-table-column
+                    prop="school"
+                    label="Duration">
+                    </el-table-column>
+                </el-table>
+            </el-collapse-item><br><br><el-collapse-item name="y3">
+                <template slot="title">
+                    <div class = "foldPanel">Year 3</div>
+                </template>
+                <el-table
+                    :data="y3Module"
+                    height="500"
+                    border
+                    style="width: 100%">
+                    <el-table-column
+                    prop="Moduletitle"
+                    label="Module Title"
+                    width="400">
+                    </el-table-column>
+                    <el-table-column
+                    prop="Modulecode"
+                    label="Module Code"
+                    width="280">
+                    </el-table-column>
+                    <el-table-column
+                    prop="credit"
+                    label="Credites"
+                    width="150">
+                    </el-table-column>
+                    <el-table-column
+                    prop="school"
+                    label="Duration">
+                    </el-table-column>
+                </el-table>
+            </el-collapse-item><br><br><el-collapse-item name="y4">
+                <template slot="title">
+                    <div class = "foldPanel">Year 4</div>
+                </template>
+                <el-table
+                    :data="y4Module"
+                    height="500"
+                    border
+                    style="width: 100%">
+                    <el-table-column
+                    prop="Moduletitle"
+                    label="Module Title"
+                    width="400">
+                    </el-table-column>
+                    <el-table-column
+                    prop="Modulecode"
+                    label="Module Code"
+                    width="280">
+                    </el-table-column>
+                    <el-table-column
+                    prop="credit"
+                    label="Credites"
+                    width="150">
+                    </el-table-column>
+                    <el-table-column
+                    prop="school"
+                    label="Duration">
+                    </el-table-column>
+                </el-table>
+            </el-collapse-item><br><br>
+        </el-collapse>
         </div>
     </div>
 </template>
@@ -56,7 +157,115 @@ export default {
             faculty: 'Computer Science / Faculty of Science and Engineering',
             studyModel: '2+2, 4+0',
             // newline for courseContent should add <br>*2 in the source
-            courseContent: 'This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!'
+            courseContent: 'This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!',
+            y2Module: [{
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }],
+            y3Module: [{
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }],
+            y4Module: [{
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }, {
+                    Moduletitle: 'Oral Communication Skills A',
+                    Modulecode: 'CELEN069',
+                    credit: '10',
+                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
+                    }]
         }
     }
 }
@@ -140,5 +349,26 @@ position: absolute;
 }
 .course-content{
     margin: 4em;
+}
+.foldPanel {
+    margin-right: -30px;
+    background-color: #116996;
+    color:white;
+    font-size:25px;
+    margin-left:0px;
+    padding-left:5px;
+    font-weight: bolder;
+    width:100%;
+}
+
+.searchCascader {
+    background-color: #F7F7F8;
+}
+.el-input__inner{
+      border:1px solid #F7F7F8;
+      background-color: #F7F7F8;
+}
+.link{
+    color: #116996;
 }
 </style>
