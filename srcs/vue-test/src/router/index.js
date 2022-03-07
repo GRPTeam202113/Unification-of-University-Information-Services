@@ -10,6 +10,7 @@ import course from '@/components/Course'
 import search from '@/components/Search'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import Ping from '../components/Ping';
 
 Vue.use(ElementUI)
 Vue.use(VueRouter)
@@ -19,6 +20,10 @@ const routes = [
     path: '/',
     name: 'HelloWorld',
     component: HelloWorld
+  },
+  {
+    path: '/ping',
+    component: Ping
   },
   {
     path: '/CELE',
