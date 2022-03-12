@@ -96,7 +96,7 @@ def year():
 
 
 
-@app.route('/faculty/course/module', methods=["POST","GET"])
+@app.route('/faculty/course/module', methods=["POST"])
 def course():
     if request.method == "POST":
         facultyname = request.json.get('facultyname')
@@ -152,6 +152,27 @@ def course():
                 return jsonify({'modulelevels': modulelevels, 'modulecodes': modulecodes, 'modulenames': modulenames, 'moduleperiods': moduleperiods})
             except:
                 return print("Error Happened")
+
+@app.route('/ErrorReport', methods=["POST"])
+def report_error():
+    if request.method == "POST":
+        error_message = request.json.get('error_message')
+        con = sqlite3.connect("error.db")
+        cur = con.cursor()
+        cur.execute("""CREATE TABLE Error (error TEXT NOT NULL)""")
+        con.commit()
+        con.close()
+
+        try:
+            con1 = sqlite3.connect("error.db")
+            cur1 = con1.cursor()
+            cur1.execute("""INSERT INTO Error (error) VALUES (?)""", error_message)
+            con1.commit()
+            con1.close()
+            return jsonify("You have successfully submitted the error report")
+        except:
+            return jsonify("On no! Something went wrong, please try again later")
+
 
 if __name__ == '__main__':
     app.debug = True
