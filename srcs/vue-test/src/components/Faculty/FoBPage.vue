@@ -1,82 +1,67 @@
+<!--
+ * @Descripttion: The page for faculty FOB, mainly demonstrate the
+ * courses(with linking to corresponding course page) under FOB faculty
+ * @Author: Yongjing Qi
+ * @Date: 2022-03-01 23:36:00
+ * @LastEditTime: 2022-03-15 10:49:46
+-->
 <template>
-    <div class ="fob">
-        <h1 class="title">Faculty of Business</h1>x
-        <span class="introduction">The Faculty of Business (FoB) at UNNC is ...</span>
-        <div class = "courses">
-        <el-table
-            :row-style="{height:'80px'}"
-            :data="courses.slice((currentPage-1)*pageSize,currentPage*pageSize)"
-            style="width: 100%; font-size: 18px; font-weight:bolder">
-            <el-table-column
-                width="300"
-                align="center">
-                <template slot-scope="scope">
-                <img :src="scope.row.img" alt="" width="300" height="300">
-                </template>
-            </el-table-column>
-            <el-table-column
-                width="1400"
-                align="center">
-                <template slot-scope="scope">
-                <a :href="scope.row.url" target="_blank" class="buttonText">{{scope.row.label}}</a>
-                </template>
-            </el-table-column>
-        </el-table>
-        <nav style="text-align: center">
-        <el-pagination
-            @size-change = "handleSizeChange"
-            @current-change = "handleCurrentChange"
-            :current-page="currentPage"
-            :page-sizes="5"
-            :page-size="pageSize"
-            small
-            layout="prev, pager, next"
-            :total="courses.length">
-        </el-pagination></nav>
+    <div class ="fose">
+        <h1 class="title">Faculty of Business</h1>
+         <el-divider></el-divider>
+        <span class="introduction">{{Intro}}</span>
+        <br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">{{Title}}</div>
+                </span>
+            </div>
         </div>
-        <router-link to="/">Back to Main</router-link>
-        <!-- <p>{{Msg}}</p> -->
+        <br><br><br>
+        <div class = "courses">
+                <el-table
+                    :show-header="false"
+                    :data="courses"
+                    margin="10%"
+                    height="500"
+                    border
+                    style="width: 100%"
+                    width="400">
+                    <el-table-column
+                    prop="moduleName">
+                    <template slot-scope="scope">
+                        <!-- <a :href="'http:'+'//www.baidu.com'" target="_blank" class="buttonText">{{scope.row.module}}</a> -->
+                        <!-- <router-link v-bind:to="'/abc/' + scope.row.code">{{scope.row.module}}</router-link> -->
+                        <el-card class="box-card" shadow="hover">
+                            <div class="subTitle"><span><router-link :to="{name:'course', params:{Faculty:'FOSE', CourseName: scope.row.label}}">{{scope.row.label}}</router-link></span></div><br>
+                            <br><br>
+                        </el-card>
+                        <!-- <span @click="toModulePage(scope.row.code)" >{{scope.row.module}}</span> -->
+                    </template>
+                    </el-table-column>
+                </el-table>
+        </div>
     </div>
 </template>
-
 <script>
+    import {FOB} from './threeFacultydb/3Facultydb'
     export default {
-        name: 'fob',
+        name: 'fose',
         data () {
             return {
-                Msg: 'Welcome to FoB !',
+                Msg: 'Welcome to FoSE !',
                 userList: [],
                 currentPage: 1,
                 pageSize: 5,
-                courses: [{
-                    value: 'FAM',
-                    label: 'Finance, Accounting and Management',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IBE',
-                    label: 'International Business Economics',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IBM',
-                    label: 'INternational Business Management',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IBC',
-                    label: 'International Business with Communication Studies',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IBL',
-                    label: 'International Business with Language',
-                    url: '/#/module'
-                }]
+                Title: 'Course',
+                Intro: 'Located in Ningbo, one of China\'s most entrepreneurial and business-orientated cities, Nottingham University Business School China (NUBS China) delivers first-class business programmes at undergraduate, postgraduate and executive levels. Our diverse business school, with faculty from more than 20 countries and regions, provides an international learning environment. Additionally, small-class teaching, tutorial system and multi-dimensional evaluation system truly emphasise students\' individualised, as well as comprehensive development. Currently, NUBS China has more than 2700 undergraduate students, over 300 master students and over 150 PhD students.',
+                courses: FOB
             }
         },
         created() {
-        this.handleUserList()
+        // this.handleUserList()
     },
     methods: {
         // initialize currentPage,pagesize and data
@@ -89,11 +74,51 @@
                 console.log(this.currentPage)
         }
     }
-    }
+}
 </script>
 
 <style rel="stylesheet/scss" lang="css" scoped>
     .courses-list{
         font-size: 200px;
+    }
+    .title{
+        margin-left: 30px;
+        font-size:50px;
+        font-weight:bolder;
+        color: black;
+    }
+    .subTitle{
+        font-size:20px;
+        font-weight: bold;
+        margin-left: 30px;
+    }
+    .box-card{
+        height: 70px;
+    }
+    .square{
+        margin-left: 20px;
+        width: 90px;
+        height: 90px;
+    }
+    .squareTitle{
+        position: absolute;
+        color:rgb(0, 0, 0);
+        background-color: #F7F7F8;
+        width:90%;
+        padding-left:5px;
+        padding-top:6px;
+        padding-bottom: 6px;
+        font-size:25px;
+        font-weight: bolder;
+    }
+    .normalTitle{
+        color:rgb(0, 0, 0);
+        font-size:25px;
+        font-weight: bolder;
+    }
+    .introduction {
+        margin-left: 40%;
+        margin-right: 10%;
+        float: right;
     }
 </style>

@@ -1,97 +1,68 @@
+<!--
+ * @Descripttion: The page for faculty FHSS, mainly demonstrate the
+ * courses(with linking to corresponding course page) under FHSS faculty
+ * @Author: Yongjing Qi
+ * @Date: 2022-03-01 23:36:00
+ * @LastEditTime: 2022-03-15 10:49:50
+-->
 <template>
     <div class ="fhss">
         <h1 class="title">Faculty of Humanities and Social Sciences</h1>
-        <span class="introduction">The Faculty of Humanities and Social Sciences (FHSS) at UNNC is ...</span>
-        <div class = "courses">
-        <el-table
-            :row-style="{height:'80px'}"
-            :data="courses.slice((currentPage-1)*pageSize,currentPage*pageSize)"
-            style="width: 100%; font-size: 18px; font-weight:bolder">
-            <el-table-column
-                width="300"
-                align="center">
-                <template slot-scope="scope">
-                <img :src="scope.row.img" alt="" width="300" height="300">
-                </template>
-            </el-table-column>
-            <el-table-column
-                width="1400"
-                align="center">
-                <template slot-scope="scope">
-                <a :href="scope.row.url" target="_blank" class="buttonText">{{scope.row.label}}</a>
-                </template>
-            </el-table-column>
-        </el-table>
-        <nav style="text-align: center">
-        <el-pagination
-            @size-change = "handleSizeChange"
-            @current-change = "handleCurrentChange"
-            :current-page="currentPage"
-            :page-sizes="5"
-            :page-size="pageSize"
-            small
-            layout="prev, pager, next"
-            :total="courses.length">
-        </el-pagination></nav>
+         <el-divider></el-divider>
+         <span class="introduction">{{Intro}}</span>
+        <br><br><br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">{{Title}}</div>
+                </span>
+            </div>
         </div>
-        <router-link to="/">Back to Main</router-link>
-        <!-- <p>{{Msg}}</p> -->
+        <br><br><br>
+        <div class = "courses">
+                <el-table
+                    :show-header="false"
+                    :data="courses"
+                    margin="10%"
+                    height="500"
+                    border
+                    style="width: 100%"
+                    width="400">
+                    <el-table-column
+                    prop="moduleName">
+                    <template slot-scope="scope">
+                        <!-- <a :href="'http:'+'//www.baidu.com'" target="_blank" class="buttonText">{{scope.row.module}}</a> -->
+                        <!-- <router-link v-bind:to="'/abc/' + scope.row.code">{{scope.row.module}}</router-link> -->
+                        <el-card class="box-card" shadow="hover">
+                            <div class="subTitle"><span><router-link :to="{name:'course', params:{Faculty:'FHSS', CourseName: scope.row.label}}">{{scope.row.label}}</router-link></span></div><br>
+                            <br><br>
+                        </el-card>
+                        <!-- <span @click="toModulePage(scope.row.code)" >{{scope.row.module}}</span> -->
+                    </template>
+                    </el-table-column>
+                </el-table>
+        </div>
     </div>
 </template>
-
 <script>
+    import { FHSS } from './threeFacultydb/3Facultydb'
     export default {
-        name: 'fhss',
+        name: 'fose',
         data () {
             return {
-                Msg: 'Welcome to FHSS !',
+                Msg: 'Welcome to FoSE !',
                 userList: [],
                 currentPage: 1,
                 pageSize: 5,
-                courses: [{
-                    value: 'Eco',
-                    label: 'Economics',
-                    url: '/#/module'
-                },
-                {
-                    value: 'EGA',
-                    label: 'English Language and Applied Linguistics',
-                    url: '/#/module'
-                },
-                {
-                    value: 'EGL',
-                    label: 'English Language and Literature',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IC',
-                    label: 'International Communication Studies',
-                    url: '/#/module'
-                },
-                {
-                    value: 'ICL',
-                    label: 'International Communication Studies with Chinese',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IET',
-                    label: 'International Economics and Trade',
-                    url: '/#/module'
-                },
-                {
-                    value: 'IS',
-                    label: 'International Studies',
-                    url: '/#/module'
-                },
-                {
-                    value: 'ISL',
-                    label: 'International Studies with Spanish/German/French/Japanese/Chinese',
-                    url: '/#/module'
-                }]
+                Title: 'Course',
+                Intro: 'We have four schools, including the School of Economics, School of Education and English, School of International Communications and the School of International Studies, and a Language Centre.',
+                courses: FHSS
             }
         },
-        created() {
-        this.handleUserList()
+        mounted() {
+            console.log(this.courses)
+        // this.handleUserList()
     },
     methods: {
         // initialize currentPage,pagesize and data
@@ -104,11 +75,51 @@
                 console.log(this.currentPage)
         }
     }
-    }
+}
 </script>
 
 <style rel="stylesheet/scss" lang="css" scoped>
     .courses-list{
         font-size: 200px;
+    }
+    .title{
+        margin-left: 30px;
+        font-size:50px;
+        font-weight:bolder;
+        color: black;
+    }
+    .subTitle{
+        font-size:20px;
+        font-weight: bold;
+        margin-left: 30px;
+    }
+    .box-card{
+        height: 70px;
+    }
+    .square{
+        margin-left: 20px;
+        width: 90px;
+        height: 90px;
+    }
+    .squareTitle{
+        position: absolute;
+        color:rgb(0, 0, 0);
+        background-color: #F7F7F8;
+        width:90%;
+        padding-left:5px;
+        padding-top:6px;
+        padding-bottom: 6px;
+        font-size:25px;
+        font-weight: bolder;
+    }
+    .normalTitle{
+        color:rgb(0, 0, 0);
+        font-size:25px;
+        font-weight: bolder;
+    }
+    .introduction {
+        margin-left: 40%;
+        margin-right: 10%;
+        float: right;
     }
 </style>

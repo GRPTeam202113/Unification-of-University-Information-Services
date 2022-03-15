@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: This is the header component for this web system,
+ * it will be shown on each web page, it is designed based on
+ * the header of UNNC official website, usefull links are listed here
+ * @Author: Yongjing Qi
+ * @Date: 2022-02-18 15:18:03
+ * @LastEditTime: 2022-03-15 10:48:01
+-->
 <template>
     <!-- element UI -->
     <el-container>
@@ -14,15 +22,16 @@
                 </div>
                 <div class = "nav-right">
                     <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                        <el-menu-item index="1">Home</el-menu-item>
-                        <el-menu-item index="2">Search</el-menu-item>
+                        <el-menu-item index="1"><router-link :to="{name:'HelloWorld'}">Home</router-link></el-menu-item>
+                        <el-menu-item index="2"><router-link :to="{name:'search'}">Search</router-link></el-menu-item>
                         <el-submenu index="3">
                             <template slot="title">More</template>
-                            <el-menu-item index="2-1"><el-link href="https://www.nottingham.edu.cn/en/index.aspx" target="_blank">UNNC</el-link></el-menu-item>
-                            <el-menu-item index="2-2"><el-link href="https://moodle.nottingham.ac.uk/login/index.php" target="_blank">Moodle</el-link></el-menu-item>
-                            <el-menu-item index="2-3"><el-link href="https://bluecastle-cn.nottingham.ac.uk/" target="_blank">Blue Castle</el-link></el-menu-item>
-                            <el-menu-item index="2-3"><el-link href="http://email.nottingham.edu.cn/" target="_blank">Email</el-link></el-menu-item>
-                            <el-menu-item index="2-3"><el-link href="https://hub.nottingham.ac.uk/" target="_blank">MyNottinghamHub </el-link></el-menu-item>
+                            <el-menu-item index="3-1"><el-link href="https://www.nottingham.edu.cn/en/index.aspx" target="_blank">UNNC</el-link></el-menu-item>
+                            <el-menu-item index="3-2"><el-link href="https://moodle.nottingham.ac.uk/login/index.php" target="_blank">Moodle</el-link></el-menu-item>
+                            <el-menu-item index="3-3"><el-link href="https://bluecastle-cn.nottingham.ac.uk/" target="_blank">Blue Castle</el-link></el-menu-item>
+                            <el-menu-item index="3-4"><el-link href="http://email.nottingham.edu.cn/" target="_blank">Email</el-link></el-menu-item>
+                            <el-menu-item index="3-5"><el-link href="https://hub.nottingham.ac.uk/" target="_blank">MyNottinghamHub </el-link></el-menu-item>
+                            <el-menu-item index="3-6"><router-link :to="{name:'errorReport'}">Error Report</router-link></el-menu-item>
                         </el-submenu>
                     </el-menu>
                 </div>
@@ -41,7 +50,7 @@
         data() {
             return {
                 isFixed: false,
-                offsetTop: 0,
+                // offsetTop: 10,
                 activeIndex: '1',
                 activeIndex2: '1'
             }
@@ -49,7 +58,7 @@
         mounted() {
             window.addEventListener('scroll', this.initHeight)
             this.$nextTick(() => {
-                this.offsetTop = document.querySelector('#boxFixed').offsetTop
+                // this.offsetTop = document.querySelector('#boxFixed').offsetTop
             })
         },
         methods: {

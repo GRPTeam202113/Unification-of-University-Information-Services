@@ -1,6 +1,16 @@
+<!--
+ * @Descripttion: In this file, the front-end determines and loads components
+ * based on dynamic routes, using the parameters passes via the routes to determine the
+ * course to load, then post the parameters to the backend to request for modules details
+ * under this course, then dynamically render the page
+ * load .vue for each module)
+ * @Author: Yongjing Qi
+ * @Date: 2022-03-01 23:36:00
+ * @LastEditTime: 2022-03-15 10:48:41
+-->
 <template>
     <div class="course">
-        <h1 class="title">{{degree}}</h1>
+        <h1 class="title">{{courseName}}</h1>
         <el-divider></el-divider>
         <br><br><br>
         <div class="block">
@@ -18,7 +28,7 @@
                         <div class="info-title">Study model</div>
                     </div>
                     <div class="content-container">
-                        <div class="info-content">{{degree}}</div>
+                        <div class="info-content">{{courseDegree}}</div>
                         <div class="info-content">{{typeOfStudy}}</div>
                         <div class="info-content">{{duration}}</div>
                         <div class="info-content">{{startDate}}</div>
@@ -41,7 +51,7 @@
             </div>
             <!-- <div class="course-content">{{courseContent}}</div> -->
             <br><br>
-            <el-collapse v-model="activeSemesterEnglish" @change="handleChange" style="width:90%;margin-left:50px">
+            <el-collapse @change="handleChange" style="width:90%;margin-left:50px">
             <el-collapse-item name="y1">
                 <template slot="title">
                     <div class = "foldPanel">Year 1</div>
@@ -57,28 +67,38 @@
                     <div class = "foldPanel">Year 2</div>
                 </template>
                 <el-table
-                    :data="y2Module"
-                    height="500"
+                    :data="Y2Modules"
+                    height="400"
                     border
                     style="width: 100%">
                     <el-table-column
-                    prop="Moduletitle"
+                    prop="moduleName"
                     label="Module Title"
                     width="400">
+                    <template slot-scope="scope">
+                        <!-- <a :href="'http:'+'//www.baidu.com'" target="_blank" class="buttonText">{{scope.row.module}}</a> -->
+                        <!-- <router-link v-bind:to="'/abc/' + scope.row.code">{{scope.row.module}}</router-link> -->
+                        <router-link :to="{name:'module', params:{ModuleCode: scope.row.moduleCode}}">{{scope.row.moduleName}}</router-link>
+                        <!-- <span @click="toModulePage(scope.row.code)" >{{scope.row.module}}</span> -->
+                    </template>
                     </el-table-column>
                     <el-table-column
-                    prop="Modulecode"
+                    prop="moduleCode"
                     label="Module Code"
                     width="280">
                     </el-table-column>
                     <el-table-column
-                    prop="credit"
-                    label="Credites"
-                    width="150">
-                    </el-table-column>
-                    <el-table-column
-                    prop="school"
-                    label="Duration">
+                    prop="semester"
+                    label="Semester"
+                    width="200"
+                    :filters="[{ text: 'Autumn Semester', value: 'Autumn China' }, { text: 'Spring Semester', value: 'Spring China' }, { text: 'Full Year', value: 'Full year China' }]"
+                    :filter-method="filterSemester"
+                    filter-placement="bottom-end">
+                    <template slot-scope="scope">
+                        <el-tag
+                        :type="scope.row.semester === 'Autumn China' ? 'primary' : 'success'"
+                        disable-transitions>{{scope.row.semester}}</el-tag>
+                    </template>
                     </el-table-column>
                 </el-table>
             </el-collapse-item><br><br><el-collapse-item name="y3">
@@ -86,28 +106,38 @@
                     <div class = "foldPanel">Year 3</div>
                 </template>
                 <el-table
-                    :data="y3Module"
-                    height="500"
+                   :data="Y3Modules"
+                    height="400"
                     border
                     style="width: 100%">
                     <el-table-column
-                    prop="Moduletitle"
+                    prop="moduleName"
                     label="Module Title"
                     width="400">
+                    <template slot-scope="scope">
+                        <!-- <a :href="'http:'+'//www.baidu.com'" target="_blank" class="buttonText">{{scope.row.module}}</a> -->
+                        <!-- <router-link v-bind:to="'/abc/' + scope.row.code">{{scope.row.module}}</router-link> -->
+                        <router-link :to="{name:'module', params:{ModuleCode: scope.row.moduleCode}}">{{scope.row.moduleName}}</router-link>
+                        <!-- <span @click="toModulePage(scope.row.code)" >{{scope.row.module}}</span> -->
+                    </template>
                     </el-table-column>
                     <el-table-column
-                    prop="Modulecode"
+                    prop="moduleCode"
                     label="Module Code"
                     width="280">
                     </el-table-column>
                     <el-table-column
-                    prop="credit"
-                    label="Credites"
-                    width="150">
-                    </el-table-column>
-                    <el-table-column
-                    prop="school"
-                    label="Duration">
+                    prop="semester"
+                    label="Semester"
+                    width="200"
+                    :filters="[{ text: 'Autumn Semester', value: 'Autumn China' }, { text: 'Spring Semester', value: 'Spring China' }, { text: 'Full Year', value: 'Full year China' }]"
+                    :filter-method="filterSemester"
+                    filter-placement="bottom-end">
+                    <template slot-scope="scope">
+                        <el-tag
+                        :type="scope.row.semester === 'Autumn China' ? 'primary' : 'success'"
+                        disable-transitions>{{scope.row.semester}}</el-tag>
+                    </template>
                     </el-table-column>
                 </el-table>
             </el-collapse-item><br><br><el-collapse-item name="y4">
@@ -115,28 +145,38 @@
                     <div class = "foldPanel">Year 4</div>
                 </template>
                 <el-table
-                    :data="y4Module"
-                    height="500"
+                    :data="Y4Modules"
+                    height="400"
                     border
                     style="width: 100%">
                     <el-table-column
-                    prop="Moduletitle"
+                    prop="moduleName"
                     label="Module Title"
                     width="400">
+                    <template slot-scope="scope">
+                        <!-- <a :href="'http:'+'//www.baidu.com'" target="_blank" class="buttonText">{{scope.row.module}}</a> -->
+                        <!-- <router-link v-bind:to="'/abc/' + scope.row.code">{{scope.row.module}}</router-link> -->
+                        <router-link :to="{name:'module', params:{ModuleCode: scope.row.moduleCode}}">{{scope.row.moduleName}}</router-link>
+                        <!-- <span @click="toModulePage(scope.row.code)" >{{scope.row.module}}</span> -->
+                    </template>
                     </el-table-column>
                     <el-table-column
-                    prop="Modulecode"
+                    prop="moduleCode"
                     label="Module Code"
                     width="280">
                     </el-table-column>
-                    <el-table-column
-                    prop="credit"
-                    label="Credites"
-                    width="150">
-                    </el-table-column>
-                    <el-table-column
-                    prop="school"
-                    label="Duration">
+                   <el-table-column
+                    prop="semester"
+                    label="Semester"
+                    width="200"
+                    :filters="[{ text: 'Autumn Semester', value: 'Autumn China' }, { text: 'Spring Semester', value: 'Spring China' }, { text: 'Full Year', value: 'Full year China' }]"
+                    :filter-method="filterSemester"
+                    filter-placement="bottom-end">
+                    <template slot-scope="scope">
+                        <el-tag
+                        :type="scope.row.semester === 'Autumn China' ? 'primary' : 'success'"
+                        disable-transitions>{{scope.row.semester}}</el-tag>
+                    </template>
                     </el-table-column>
                 </el-table>
             </el-collapse-item><br><br>
@@ -146,127 +186,81 @@
 </template>
 
 <script>
+import {request} from '../router/request'
 export default {
     name: 'course',
     data() {
         return {
-            degree: 'BSc (Hons) Computer Science',
-            typeOfStudy: 'Full Year',
-            duration: 'Three or four years depending on entry qualifications',
-            startDate: 'September 2022',
-            faculty: 'Computer Science / Faculty of Science and Engineering',
-            studyModel: '2+2, 4+0',
-            // newline for courseContent should add <br>*2 in the source
-            courseContent: 'This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!This is the course of computer science!',
-            y2Module: [{
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }],
-            y3Module: [{
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }],
-            y4Module: [{
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }, {
-                    Moduletitle: 'Oral Communication Skills A',
-                    Modulecode: 'CELEN069',
-                    credit: '10',
-                    school: 'IB, ECO, IC, IS, ELAL, ELL, EG, CS, MAM, Ens, EIB, Arch'
-                    }]
+            courseName: null,
+            courseDegree: null,
+            typeOfStudy: null,
+            duration: null,
+            startDate: null,
+            faculty: null,
+            studyModel: null,
+            courseContent: null,
+            Y2Modules: [],
+            Y3Modules: [],
+            Y4Modules: []
         }
+    },
+    mounted() {
+        this.initPage();
+    },
+    methods: {
+        initPage() {
+            const CourseName = this.$route.params.CourseName;
+            this.courseName = CourseName;
+            // console.log(CourseName)
+            const Faculty = this.$route.params.Faculty;
+            var para = {facultyname: Faculty, coursename: CourseName}
+
+            var returnVal = request.post(para)
+            var returnValue = null
+            returnVal.then((result) => {
+                returnValue = result.data
+                console.log(returnValue)
+                this.processReturnValue(returnValue)
+            })
+            var paraForCourseInfor = {coursename: this.courseName}
+            var returnValForCourseInfor = request.postCourseName(paraForCourseInfor)
+            var returnValueForCourseInfor = null
+            returnValForCourseInfor.then((result) => {
+                returnValueForCourseInfor = result.data
+                console.log(returnValue)
+                this.processReturnValueForCourseInfor(returnValueForCourseInfor)
+            })
+        },
+        filterSemester(value, row) {
+        return row.semester === value;
+        },
+        processReturnValue(returnValue) {
+            var allModules = returnValue
+            for (let i = 0; i < allModules.modulecodes.length; i++) {
+                var element = {'moduleName': allModules.modulenames[i], 'moduleCode': allModules.modulecodes[i], 'semester': allModules.moduleperiods[i]}
+                if (allModules.modulelevels[i] === 'Level 1') {
+                    this.Y2Modules.push(element)
+                } else if (allModules.modulelevels[i] === 'Level 2') {
+                    this.Y3Modules.push(element)
+                } else if (allModules.modulelevels[i] === 'Level 3') {
+                    this.Y4Modules.push(element)
+                }
+            }
+            // console.log('hhhh')
+            // console.log(this.Y2Modules)
+            // console.log(this.Y3Modules)
+            // console.log(this.Y4Modules)
+        },
+        processReturnValueForCourseInfor(returnValue) {
+            var infor = returnValue
+            this.courseDegree = infor.coursedegree[0]
+            this.typeOfStudy = infor.coursetype[0]
+            this.duration = infor.courseduration[0]
+            this.startDate = infor.coursestartdate[0]
+            this.faculty = infor.coursefaculty[0]
+            this.studyModel = infor.coursemodel[0]
+        },
+        handleChange() {}
     }
 }
 </script>

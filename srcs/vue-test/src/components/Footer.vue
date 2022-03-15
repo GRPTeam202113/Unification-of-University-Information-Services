@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: This is the footer component for this web system,
+ * it will be shown on each web page, it is designed based on
+ * the footer of UNNC official website, useful links are listed here
+ * @Author: Yongjing Qi
+ * @Date: 2022-02-18 15:18:03
+ * @LastEditTime: 2022-03-15 10:48:26
+-->
 <template>
     <el-container>
         <div class="Footer">
@@ -19,6 +27,7 @@
             <div class = "mainBody"><a href="https://bluecastle-cn.nottingham.ac.uk/">Blue Castle</a></div>
             <div class = "mainBody"><a href="http://email.nottingham.edu.cn/">Email</a></div>
             <div class = "mainBody"><a href="https://hub.nottingham.ac.uk/">MyNottinghamHub</a></div>
+            <div class = "mainBody"><router-link :to="{name:'errorReport'}">Error Report</router-link></div>
         </div>
         <div class="Footer">
             <div class="title">Social Media</div>

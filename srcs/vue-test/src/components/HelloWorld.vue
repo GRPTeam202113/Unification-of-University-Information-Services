@@ -1,7 +1,14 @@
+<!--
+ * @Descripttion: This is the mainbody of home page, including concise
+ * introduction and link of each faculty(FOSE, FHSS, FOB, CELE)
+ * @Author: Yongjing Qi
+ * @Date: 2022-02-18 15:18:03
+ * @LastEditTime: 2022-03-15 10:47:53
+-->
 <template>
 <div>
   <el-carousel :interval="5000" type="card" height="400px">
-  <el-carousel-item v-for="item in images" :key="item">
+  <el-carousel-item v-for="(item,index) in images" :key="index">
     <img :src="item.url" alt="无图片"/>
   </el-carousel-item>
   </el-carousel>
