@@ -1,0 +1,447 @@
+<template>
+    <div class ="module">
+        <h1 class="title">{{ moduleName }}</h1>
+        <el-divider></el-divider>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">General Information</div>
+                </span>
+            </div>
+        </div>
+        <!-- here below are the content for general information part-->
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h4>Academic Year:</h4></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ year }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Total Credites:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ credit }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Level:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ level }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Target Students:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ targetStudents }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Offering School:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ offeringSchool }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Taught Semesters:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ taughtSemesters }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Requisites:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ requisites }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Additional Requirements:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ additionalRequirements }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Method and Frequency of Class:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <el-table
+                    :data="methodAndFrequency"
+                    border
+                    style="width: 70%; color: black">
+                    <el-table-column
+                    prop="activity"
+                    label="Activity"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="numberOfWeeks"
+                    label="Number of Weeks"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="numberOfSessions"
+                    label="Number of Sessions">
+                    </el-table-column>
+                    <el-table-column
+                    prop="duration"
+                    label="Duration of a session">
+                    </el-table-column>
+                </el-table>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Further Activity Detail:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="generalFurtherActivityDetail"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">Teaching Content</div>
+                </span>
+            </div>
+        </div>
+        <!-- here below are the content for content part-->
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Education Aims:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="educationAims"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Summary Of Content:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="summaryOfContent"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Learning Outcome:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="learningOutcome"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">Teaching Staff</div>
+                </span>
+            </div>
+        </div>
+        <br><br><br>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="10">
+                <el-card :body-style="{ padding: '0px' }">
+                    <el-row>
+                        <el-col :span="12">
+                            <div class="staffName">{{ staffName }}</div>
+                            <div class="staffDepartment">{{ staffDepartment }}</div>
+                            <div class="staffLink">
+                                <el-link href="https://element.eleme.io" type="primary" target="_blank">Link to UNNC staff page</el-link>
+                                <el-link href="https://element.eleme.io" type="primary" target="_blank">Link to hoogle scholar</el-link>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+            <el-col :span="2"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="10">
+                <el-card :body-style="{ padding: '0px' }">
+                    <div class="contactTitle">Contact</div>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Office:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffOffice }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Campus:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffCampus }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Address:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffAddress }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Contact:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffTelephone }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">Assessment</div>
+                </span>
+            </div>
+        </div>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Method of Assessment:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <el-table
+                    :data="assessmentTable"
+                    border
+                    style="width: 70%; color: black">
+                    <el-table-column
+                    prop="type"
+                    label="Assessment Type"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="weight"
+                    label="Weight"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="requirements"
+                    label="Requirements">
+                    </el-table-column>
+                </el-table>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Further Activity Detail:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ assessmentFurtherActivityDetail }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+    </div>
+</template>
+<script>
+    export default {
+        name: 'module',
+        data () {
+            return {
+moduleName: 'Machine Learning',
+year: 'Academic Year 2022',
+credit: '20.00',
+level: '3',
+targetStudents: 'Part II undergraduate students.students.',
+offeringSchool: 'School of Computer Science',
+taughtSemesters: 'Autumn China',
+requisites: 'N/A',
+additionalRequirements: 'N/A',
+staffName: 'Dr Zheng Lu',
+generalFurtherActivityDetail: '<br>Method and Frequency of Class and timing of class: two two-hour lectures per week, with practical problems being tackled in  individual coursework. One two-hour lab session will be<br> held, in which students work on practical programming assignments and their coursework, or  engage in further practice led learning.',
+educationAims: '<div class="PSLONGEDITBOX" id="UN_PAM_CRSE_DTL_UN_AIMS$0" style="word-wrap: break-word;"><br><p>To introduce the principles, techniques and applications of machine learning and pattern recognition.To enable students the to appreciate some of the most widely used machine learning and pattern recognition algorithms and applications, as well as data mining techniques and their applications.To enable the students to understand and be able to put into practice a variety of machine learning and pattern recognition algorithms, as well as data mining techniques.To enable students to apply data mining techniques on real data sets, some of which can be described as big data sets.To allow students to appreciate the potential and limitation of big data.</p></div>',
+learningOutcome: '<div class="PSLONGEDITBOX" id="UN_QAA_CRSE_OUT_UN_LEARN_OUTCOME$0" style="word-wrap: break-word;"><br><p>Knowledge and Understanding:<br> •Understanding the capabilities, strengths and limitations of machine learning paradigms(A3)<br> •an appreciation of learning systems and learning algorithms (A4)</p><p>Intellectual Skills:<br> •The ability to understand complex ideas and relate them to specific situations (B4)<br> •The ability to identify both capabilities and limitations of a machine learning or pattern recognition method (B4)</p><p>Professional Skills<br> •The ability to implement selected machine learning operations including learning algorithms and apply them in real world applications (C1)<br> •The ability to evaluate available machine learning models and learning algorithms and select those appropriate to a given task (C3)</p><p>Transferable Skills:<br> •The ability to address real problems and assess the value of their proposed solutions (D1)<br> •The ability to retrieve and analyse information from a variety of sources and produced detailed written reports on the result (D4)</p></div>',
+summaryOfContent: '<div class="PSLONGEDITBOX" id="UN_PAM_CRSE_DTL_UN_SUMMARY_CONTENT$0" style="word-wrap: break-word;"><br><p><b>Prerequisites: </b>Good high-level programming (COMP1038 or COMP1039 or equivalent) and good Mathematics for Computer Science (COMP1034 or equivalent)</p><p>Providing you with an introduction to machine learning, pattern recognition, and data mining techniques, this module will enable you to consider both systems which are able to develop their own rules from trial-and-error experience to solve problems, as well as systems that find patterns in data without any supervision. In the latter case, data mining techniques will make generation of new knowledge possible, including very big data sets. This is now fashionably termed "big data" science. You will cover a range of topics including: machine learning foundations; pattern recognition foundations; artificial neural networks; deep learning; applications of machine learning; data mining techniques and evaluating hypotheses. You will spend around six hours each week in lectures and computer classes for this module.</p></div>',
+assessmentFurtherActivityDetail: '<br>Method and Frequency of Class and timing of class: two two-hour lectures per week, with practical problems being tackled in  individual coursework. One two-hour lab session will be<br> held, in which students work on practical programming assignments and their coursework, or  engage in further practice led learning.',
+methodAndFrequency: [{
+activity: 'Computing',
+numberOfWeeks: '12 weeks',
+numberOfSessions: '1 week',
+duration: '2 hours'
+}, {
+activity: 'Lecture',
+numberOfWeeks: '12 weeks',
+numberOfSessions: '2 week',
+duration: '2 hours'
+}],
+assessmentTable: [{
+type: 'Coursework 1',
+weight: '30.00',
+requirements: 'Individual programming and data analysis assignment including codes and experiment reports'
+}, {
+type: 'Exam 1',
+weight: '70.00',
+requirements: '2-hour written examination'
+}],
+staffOffice: 'Room 426, Sir Peter Mansfield Building',
+staffAddress: '199 Taikang East Road, Ningbo, 315100, China',
+staffCampus: 'University of Nottingham Ningbo China',
+staffTelephone: '+86 (0)574 88180000 (ext. 8713)',
+staffDepartment: 'Faculty of Science and Engineering'
+            }
+        }
+    }
+</script>
+
+<style scoped>
+.square{
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
+}
+.squareTitle{
+    position: absolute;
+    color:rgb(0, 0, 0);
+    background-color: #F7F7F8;
+    width:90%;
+    padding-left:5px;
+    padding-top:6px;
+    padding-bottom: 6px;
+    font-size:25px;
+    font-weight: bolder;
+}
+.normalTitle {
+    color:rgb(0, 0, 0);
+    font-size:25px;
+    font-weight: bolder;
+}
+.title {
+    margin-top: 0;
+    margin-left: 30px;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+.grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+.bg-purple-white {
+    background: #ffffff;
+}
+.el-col {
+    text-align: left;
+}
+.attribute {
+    font-size: 12px;
+    color:#4F6791
+}
+.content{
+    font-size: 12px;
+}
+.staffName {
+    font-size: 20px;
+    font-weight: bolder;
+    margin:10%;
+}
+.staffIntro {
+    font-size: 15px;
+    font-weight: bold;
+    margin:10%;
+}
+.staffDepartment {
+    font-size: 12px;
+    margin:10%;
+}
+.staffLink {
+    margin:10%;
+}
+.staffPicture {
+    margin: 15%;
+    width: 50%;
+}
+.contactTitle {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
+}
+.contactContent {
+    font-size: 12px;
+    color:rgb(123, 123, 123)
+}
+</style>

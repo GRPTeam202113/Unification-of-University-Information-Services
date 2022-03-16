@@ -1,0 +1,84 @@
+            }
+        }
+    }
+</script>
+
+<style scoped>
+.square{
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
+}
+.squareTitle{
+    position: absolute;
+    color:rgb(0, 0, 0);
+    background-color: #F7F7F8;
+    width:90%;
+    padding-left:5px;
+    padding-top:6px;
+    padding-bottom: 6px;
+    font-size:25px;
+    font-weight: bolder;
+}
+.normalTitle {
+    color:rgb(0, 0, 0);
+    font-size:25px;
+    font-weight: bolder;
+}
+.title {
+    margin-top: 0;
+    margin-left: 30px;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+.grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+.bg-purple-white {
+    background: #ffffff;
+}
+.el-col {
+    text-align: left;
+}
+.attribute {
+    font-size: 12px;
+    color:#4F6791
+}
+.content{
+    font-size: 12px;
+}
+.staffName {
+    font-size: 20px;
+    font-weight: bolder;
+    margin:10%;
+}
+.staffIntro {
+    font-size: 15px;
+    font-weight: bold;
+    margin:10%;
+}
+.staffDepartment {
+    font-size: 12px;
+    margin:10%;
+}
+.staffLink {
+    margin:10%;
+}
+.staffPicture {
+    margin: 15%;
+    width: 50%;
+}
+.contactTitle {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
+}
+.contactContent {
+    font-size: 12px;
+    color:rgb(123, 123, 123)
+}
+</style>

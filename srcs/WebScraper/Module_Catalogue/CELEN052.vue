@@ -1,0 +1,446 @@
+<template>
+    <div class ="module">
+        <h1 class="title">{{ moduleName }}</h1>
+        <el-divider></el-divider>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">General Information</div>
+                </span>
+            </div>
+        </div>
+        <!-- here below are the content for general information part-->
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h4>Academic Year:</h4></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ year }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Total Credites:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ credit }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Level:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ level }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Target Students:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ targetStudents }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Offering School:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ offeringSchool }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Taught Semesters:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ taughtSemesters }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Requisites:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ requisites }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Additional Requirements:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ additionalRequirements }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Method and Frequency of Class:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <el-table
+                    :data="methodAndFrequency"
+                    border
+                    style="width: 70%; color: black">
+                    <el-table-column
+                    prop="activity"
+                    label="Activity"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="numberOfWeeks"
+                    label="Number of Weeks"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="numberOfSessions"
+                    label="Number of Sessions">
+                    </el-table-column>
+                    <el-table-column
+                    prop="duration"
+                    label="Duration of a session">
+                    </el-table-column>
+                </el-table>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Further Activity Detail:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="generalFurtherActivityDetail"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">Teaching Content</div>
+                </span>
+            </div>
+        </div>
+        <!-- here below are the content for content part-->
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Education Aims:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="educationAims"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Summary Of Content:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="summaryOfContent"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Learning Outcome:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3 v-html="learningOutcome"></h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">Teaching Staff</div>
+                </span>
+            </div>
+        </div>
+        <br><br><br>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="10">
+                <el-card :body-style="{ padding: '0px' }">
+                    <el-row>
+                        <el-col :span="12">
+                            <div class="staffName">{{ staffName }}</div>
+                            <div class="staffDepartment">{{ staffDepartment }}</div>
+                            <div class="staffLink">
+                                <el-link href="https://element.eleme.io" type="primary" target="_blank">Link to UNNC staff page</el-link>
+                                <el-link href="https://element.eleme.io" type="primary" target="_blank">Link to hoogle scholar</el-link>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+            <el-col :span="2"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="10">
+                <el-card :body-style="{ padding: '0px' }">
+                    <div class="contactTitle">Contact</div>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Office:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffOffice }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Campus:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffCampus }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Address:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffAddress }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                    <el-row>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="3">
+                            <span class="attribute"><h3>Contact:</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                        <el-col :span="18">
+                            <span class="contactContent"><h3>{{ staffTelephone }}</h3></span>
+                        </el-col>
+                        <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+                    </el-row>
+                </el-card>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+        <div class="block">
+            <div style="position: relative;">
+                <img class="square" src="../../assets/square.png" alt="">
+                <span class="squareTitle" style="position: absolute; bottom: 20px; left: 50px;">
+                    <div class="normalTitle">Assessment</div>
+                </span>
+            </div>
+        </div>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Method of Assessment:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <el-table
+                    :data="assessmentTable"
+                    border
+                    style="width: 70%; color: black">
+                    <el-table-column
+                    prop="type"
+                    label="Assessment Type"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="weight"
+                    label="Weight"
+                    width="180">
+                    </el-table-column>
+                    <el-table-column
+                    prop="requirements"
+                    label="Requirements">
+                    </el-table-column>
+                </el-table>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="3">
+                <span class="attribute"><h3>Further Activity Detail:</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+            <el-col :span="18">
+                <span class="content"><h3>{{ assessmentFurtherActivityDetail }}</h3></span>
+            </el-col>
+            <el-col :span="1"><div class="grid-content bg-purple-white"></div></el-col>
+        </el-row>
+        <br><br><br><br>
+    </div>
+</template>
+<script>
+    export default {
+        name: 'module',
+        data () {
+            return {
+moduleName: 'UG English in Specific Academic Contexts B (Engineering; Comp Sci; Env'mental Sci & Architecture)',
+year: 'Academic Year 2022',
+credit: '20.00',
+level: '0',
+targetStudents: 'UNNC Preliminary Year students only',
+offeringSchool: 'Centre for English Language Education',
+taughtSemesters: 'Spring China',
+requisites: 'N/A',
+additionalRequirements: 'N/A',
+staffName: '',
+generalFurtherActivityDetail: '<br>Supplemented by a further 140 hours of self-directed study.',
+educationAims: '<div class="PSLONGEDITBOX" id="UN_PAM_CRSE_DTL_UN_AIMS$0" style="word-wrap: break-word;"><br><p><span lang="EN-GB" style="color: rgb(0, 57, 101); font-family: "Calibri",sans-serif; font-size: 12pt; mso-fareast-font-family: "Times New Roman"; mso-bidi-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;">To equip students with the necessary language, strategies and skills that will enable them to read, write, speak and listen across a range of subject-specific contexts within the academic field of Science and Engineering.</span></p></div>',
+learningOutcome: '<div class="PSLONGEDITBOX" id="UN_QAA_CRSE_OUT_UN_LEARN_OUTCOME$0" style="word-wrap: break-word;"><br><p> </p><p><span style="font-size: medium;"><span style="font-family: calibri;">a) Knowledge and Understanding</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  the ability to apply appropriate academic reading skills and sub-skills and take a critical approach to academic reading within Science &amp; Engineering disciplines e.g. the ability to evaluate the validity of arguments and identify a writer¡¦s stance.</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  an understanding of what is typically expected in discipline-specific written examinations and coursework assignments at the undergraduate level and the study approaches needed to meet these requirements.</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  an understanding of how to format and structure discipline-specific undergraduate level academic written work appropriately.</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  an awareness of the vocabulary appropriate to academic writing in specific Science &amp; Engineering disciplines and the ability to use this effectively.</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  the ability to take part in lectures and seminars on topics relating to specific Science &amp; Engineering disciplines.</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  the ability to read and write discipline-specific material effectively under timed conditions.</span></span></p><p> </p><p><span style="font-size: medium;"><span style="font-family: calibri;">b) Intellectual Skills</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  critical thinking, analysis and synthesis.</span></span></p><p> </p><p><span style="font-size: medium;"><span style="font-family: calibri;">c) Transferable/Key Skills</span></span></p><p><span style="font-size: medium;"><span style="font-family: calibri;">•  the ability to apply appropriate reading strategies in order to comprehend written academic discourse specific to particular Science &amp; Engineering disciplines.</span></span></p><p><span style="font-size: 11pt;"><span style="font-family: calibri,sans-serif;">•  the ability to present and communicate ideas and arguments effectively in specific Science &amp; Engineering oral and written contexts.</span></span></p><p> </p></div>',
+summaryOfContent: '<div class="PSLONGEDITBOX" id="UN_PAM_CRSE_DTL_UN_SUMMARY_CONTENT$0" style="word-wrap: break-word;"><br><p>This module develops discipline-specific EAP reading, writing, listening and speaking skills within a range of Science &amp; Engineering academic contexts. It covers the following areas:<br><br></p><li>applying core reading skills to discipline-specific texts<br><br></li><li>identifying the purpose and organization of discipline-specific texts<br><br></li><li>locating and understanding key information in discipline-specific texts<br><br></li><li>interpreting and incorporating data and graphic information<br><br></li><li>recognizing stance, hedging and how ideas in discipline-specific texts are linked<br><br></li><li>understanding the particular requirements of different writing tasks within Science and Engineering contexts <br><br></li><li>note-taking from written sources, summarizing and paraphrasing<br><br></li><li>synthesizing sources and developing academic arguments<br><br></li><li>analyzing and producing reports and technical writing<br><br></li><li>appropriate application of academic referencing conventions<br><br></li><li>further development of seminar discussion skills within Science &amp; Engineering contexts e.g. evaluating others contributions, persuading others of a point of view and achieving consensus<br><br></li><li>systematic development of core vocabulary relating to specific disciplines<br><br></li><li>consolidation of listening based note-taking skills within Science &amp; Engineering contexts<br><br></li><li>development of higher level listening skills e.g. ability to deduce meanings from context; ability to recognize the function of intonation; ability to recognize digressions and other irrelevant matter<br><br><br><br><p></p></li></div>',
+assessmentFurtherActivityDetail: '<br>Supplemented by a further 140 hours of self-directed study.',
+methodAndFrequency: [{
+activity: 'Seminar',
+numberOfWeeks: '12 weeks',
+numberOfSessions: '3 week',
+duration: '2 hours'
+}],
+assessmentTable: [{
+type: 'Coursework 1',
+weight: '40.00',
+requirements: '1,500 words Critical evaluation essay or report'
+}, {
+type: 'Oral Exam',
+weight: '20.00',
+requirements: '1 x 20 minute in-class seminar discussion'
+}, {
+type: 'Exam 1',
+weight: '40.00',
+requirements: '1.5 hour Written exam based on common genres from the discipline2 hour end-of-semester reading/writing exam'
+}],
+staffOffice: '',
+staffAddress: '',
+staffCampus: '',
+staffTelephone: '',
+staffDepartment: ''
+            }
+        }
+    }
+</script>
+
+<style scoped>
+.square{
+    margin-left: 20px;
+    width: 90px;
+    height: 90px;
+}
+.squareTitle{
+    position: absolute;
+    color:rgb(0, 0, 0);
+    background-color: #F7F7F8;
+    width:90%;
+    padding-left:5px;
+    padding-top:6px;
+    padding-bottom: 6px;
+    font-size:25px;
+    font-weight: bolder;
+}
+.normalTitle {
+    color:rgb(0, 0, 0);
+    font-size:25px;
+    font-weight: bolder;
+}
+.title {
+    margin-top: 0;
+    margin-left: 30px;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+  }
+.grid-content {
+    border-radius: 4px;
+    min-height: 36px;
+  }
+.bg-purple-white {
+    background: #ffffff;
+}
+.el-col {
+    text-align: left;
+}
+.attribute {
+    font-size: 12px;
+    color:#4F6791
+}
+.content{
+    font-size: 12px;
+}
+.staffName {
+    font-size: 20px;
+    font-weight: bolder;
+    margin:10%;
+}
+.staffIntro {
+    font-size: 15px;
+    font-weight: bold;
+    margin:10%;
+}
+.staffDepartment {
+    font-size: 12px;
+    margin:10%;
+}
+.staffLink {
+    margin:10%;
+}
+.staffPicture {
+    margin: 15%;
+    width: 50%;
+}
+.contactTitle {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top:5%;
+}
+.contactContent {
+    font-size: 12px;
+    color:rgb(123, 123, 123)
+}
+</style>
