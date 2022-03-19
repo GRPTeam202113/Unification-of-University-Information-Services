@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="database" uuid="76d51a34-404d-41ed-bb78-84b49f1b2f22">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\24391\Desktop\Nottingham\2021-22 Autumn - Spring\Software Engineering Group Project\Project Workload\pythonProject\database.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="database_Malaysia" uuid="f772e0ec-9e6b-462f-8f75-2362cee102e8">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\24391\Desktop\Nottingham\2021-22 Autumn - Spring\Software Engineering Group Project\Project Workload\pythonProject\database_Malaysia.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="database_China" uuid="a80f5131-172d-4a27-80e6-daa392143ada">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\24391\Desktop\Nottingham\2021-22 Autumn - Spring\Software Engineering Group Project\Project Workload\pythonProject\database_China.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="database_UK" uuid="431d18da-a583-4e54-a96d-e170b8c8f7b9">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\24391\Desktop\Nottingham\2021-22 Autumn - Spring\Software Engineering Group Project\Project Workload\pythonProject\database_UK.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
