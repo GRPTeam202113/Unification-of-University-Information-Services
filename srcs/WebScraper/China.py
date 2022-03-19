@@ -10,7 +10,7 @@ import time
 from bs4 import BeautifulSoup
 import sqlite3
 
-
+# Using Selenium to get module catalogue page
 def get_html():
     driver = webdriver.Chrome()
     time.sleep(1)
@@ -73,6 +73,7 @@ def add_db(text, tableName):
     moduleName = []
     moduleLevel = []
     modulePeriod = []
+    # Find all the information in brief and insert them into the database
     for num in range(0, 1000):
         try:
             moduleCode += soup.find_all("a", id="CRSE_CODE$" + str(num))

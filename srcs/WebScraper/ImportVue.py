@@ -9,12 +9,15 @@ from bs4 import BeautifulSoup
 import os
 
 
+# Connect the database and open the related information content HTML document
+# Gain all the information in raw and send them into further operation
 def open_db():
     con = sqlite3.connect("UUIS_database.db")
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("SELECT Code from UNNC_module_catalogue;")
     code = cur.fetchall()
+    # According to the module's name, search and open the target module HTML document
     for item in code:
             try:
                 file = open("./UNNC Module Information/" + str(item[0]) + ".html", "r", encoding="utf-8")
@@ -23,7 +26,7 @@ def open_db():
             except FileNotFoundError:
                 continue
 
-
+# Cope with the data and create a Vue document
 def write_vue(code, content):
     con = sqlite3.connect("UUIS_database.db")
     con.row_factory = sqlite3.Row
@@ -33,12 +36,15 @@ def write_vue(code, content):
     name = ""
     for item in moduleName:
         name = item[0]
+    # Create the specified module page
     file = open("./Module_Catalogue/" + code + ".vue", "wb")
     template_part1 = open("template_Part1.txt", "r", encoding="utf-8")
     template_part2 = open("template_Part2.txt", "r", encoding="utf-8")
 
     soup = BeautifulSoup(content.replace('<br>', '\n').replace('<br/>', '\n'), 'html.parser')
 
+    # Search the information about special modules
+    # The following part of code are used to cope with some problems
     Academic_Year = soup.find(id='UN_PAM_EXTR_WRK_HTMLAREA5').string
     Total_Credits = soup.find(id='UN_PAM_CRSE_DTL_UNITS_MINIMUM$0').string
     Level = soup.find(id='UN_PAM_CRSE_DTL_UN_LEVELS$0').string
@@ -54,6 +60,8 @@ def write_vue(code, content):
     assessmentFurtherActivityDetail = soup.find(id="UN_PAM_EXTR_WRK_UN_ACTIVITY_INFO$97$$0").string
     methodAndFrequency = ""
 
+    # Cope with the data whose forms are tables
+    # This part is used to handle this special case
     for index in range(0, 5):
         try:
             s1 = "UN_PAM_CRSE_FRQ_SSR_COMPONENT$" + str(index)
@@ -71,6 +79,7 @@ def write_vue(code, content):
         except:
             continue
 
+    # This part is used to handle the assessment method and frequency tables
     methodOfAssessment = ""
     for index in range(0, 5):
         try:
@@ -84,12 +93,31 @@ def write_vue(code, content):
         except:
             continue
 
+    # Collect the information of module convener
     try:
         Convenor = soup.find(id='UN_PAM_CRS_CONV_NAME52$0').string
     except BaseException as e:
         Convenor = ""
 
+    staffUrl = ""
+    try:
+        con = sqlite3.connect("UUIS_database.db")
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
+        cur.execute("SELECT URL FROM UNNC_Staff WHERE NAME = ?;", (Convenor,))
+        url = cur.fetchall()
+        for item in url:
+            staffUrl = item[0]
+            print(staffUrl)
+    except:
+        print("error")
+        staffUrl = ""
+
+    # Cope with different convener and its related part of information
+    # If the staff is not recorded in the back-end database, his/her information will be blank
+    # Else, let the specified staff's information insert into the module pages
     if Convenor != "":
+        # Search the information and cope with different
         for header in ["CELE_", "FOSE_", "FHSS_", "FOB_"]:
             if header == "CELE_":
                 staffDepartment = "Center for English Language Education"
@@ -102,6 +130,8 @@ def write_vue(code, content):
             fileName = header + Convenor + ".html"
             if os.path.exists("./UNNC Staff Information/" + fileName):
                 try:
+                    # Some staff may not have email or telephone
+                    # Merge email and telephone number into a single part called contact
                     staffFile = open("./UNNC Staff Information/" + fileName, "r", encoding="utf-8")
                     soup2 = BeautifulSoup(staffFile, "html.parser")
                     staffInformation = soup2.select(".key-information__details__row__cell")
@@ -115,8 +145,9 @@ def write_vue(code, content):
                     break
                 except:
                     print(name)
-            elif os.path.exists("./UNNC Staff Information/" + header + Convenor.replace("Dr ", "").replace("Dr.", "").replace("Prof.", "") + ".html"):
-                fileName = header + Convenor.replace("Dr ", "").replace("Dr.", "").replace("Prof.", "") + ".html"
+            # Cope with some special teaching staff's name which contains headers
+            elif os.path.exists("./UNNC Staff Information/" + header + Convenor.replace("Dr ", "").replace("Dr. ", "").replace("Prof. ", "") + ".html"):
+                fileName = header + Convenor.replace("Dr ", "").replace("Dr. ", "").replace("Prof. ", "") + ".html"
                 try:
                     staffFile = open("./UNNC Staff Information/" + fileName, "r", encoding="utf-8")
                     soup2 = BeautifulSoup(staffFile, "html.parser")
@@ -145,8 +176,9 @@ def write_vue(code, content):
         staffAddress = ""
         staffDepartment = ""
 
+    # Insert the script part of code into related Vue document
     try:
-        script = "moduleName: '" + name.replace("\n", "") + "',\nyear: '" + Academic_Year.replace("\n", "") + "',\ncredit: '" + Total_Credits + "',\nlevel: '" + Level + "',\ntargetStudents: '" + Target_Students.replace("\n", "") + "',\nofferingSchool: '" + Offering_School + "',\ntaughtSemesters: '" + Taught_Semesters + "',\nrequisites: '" + Requisites + "',\nadditionalRequirements: '" + Additional_Requirements + "',\nstaffName: '" + Convenor + "',\ngeneralFurtherActivityDetail: '" + generalFurtherActivityDetail.replace('\n', '<br>').replace("'s", "").replace('\t','') + "',\neducationAims: '" + educationAims.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "") + "',\nlearningOutcome: '" + learningOutcome.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "") + "',\nsummaryOfContent: '" + summaryOfContent.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "").replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '') + "',\nassessmentFurtherActivityDetail: '" + assessmentFurtherActivityDetail.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "") + "',\nmethodAndFrequency: [" + methodAndFrequency + "],\nassessmentTable: [" + methodOfAssessment + "],\nstaffOffice: '" + staffOffice + "',\nstaffAddress: '" + staffAddress + "',\nstaffCampus: '" + staffCampus + "',\nstaffTelephone: '" + staffEmail + "',\nstaffDepartment: '" + staffDepartment + "'\n"
+        script = "moduleName: '" + name.replace("\n", "") + "',\nyear: '" + Academic_Year.replace("\n", "") + "',\ncredit: '" + Total_Credits + "',\nlevel: '" + Level + "',\ntargetStudents: '" + Target_Students.replace("\n", "") + "',\nofferingSchool: '" + Offering_School + "',\ntaughtSemesters: '" + Taught_Semesters + "',\nrequisites: '" + Requisites + "',\nadditionalRequirements: '" + Additional_Requirements + "',\nstaffName: '" + Convenor + "',\ngeneralFurtherActivityDetail: '" + generalFurtherActivityDetail.replace('\n', '<br>').replace("'s", "").replace('\t','') + "',\neducationAims: '" + educationAims.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "") + "',\nlearningOutcome: '" + learningOutcome.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "") + "',\nsummaryOfContent: '" + summaryOfContent.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "").replace('', '').replace('', '').replace('', '').replace('', '').replace('', '').replace('', '') + "',\nassessmentFurtherActivityDetail: '" + assessmentFurtherActivityDetail.replace('\n', '<br>').replace("'s", "").replace("'", "\"").replace('\t', "") + "',\nmethodAndFrequency: [" + methodAndFrequency + "],\nassessmentTable: [" + methodOfAssessment + "],\nstaffOffice: '" + staffOffice + "',\nstaffAddress: '" + staffAddress + "',\nstaffCampus: '" + staffCampus + "',\nstaffTelephone: '" + staffEmail + "',\nstaffDepartment: '" + staffDepartment + "',\nstaffUrl: '" + staffUrl + "'\n"
         file.write((template_part1.read() + script + template_part2.read()).encode(encoding="utf-8"))
     except:
         print(code)

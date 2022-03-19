@@ -9,16 +9,17 @@ from selenium.webdriver.support.select import Select
 import time
 import sqlite3
 
-
+# Handle the database and collect the module code
 def get_code():
-    # con = sqlite3.connect("UUIS_database.db")
-    # con.row_factory = sqlite3.Row
-    # cur = con.cursor()
-    codes = ["CELEN083", "EDEN4002", "INCM4034"]
+    con = sqlite3.connect("UUIS_database.db")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    # This part is used to clear the mistakes when running the program
+    # codes = ["CELEN083", "EDEN4002", "INCM4034"]
     try:
         # count = 0
-        # cur.execute("SELECT Code FROM UNNC_module_catalogue;")
-        # codes = cur.fetchall()
+        cur.execute("SELECT Code FROM UNNC_module_catalogue;")
+        codes = cur.fetchall()
         for code in codes:
             try:
                 # count += 1
@@ -31,7 +32,8 @@ def get_code():
     except:
         pass
 
-
+# Using Selenium to collect the specified module catalogue
+# Get the webpage's resource and write them into HTML document
 def get_html(fileName, code):
     file = open(fileName, mode="w", encoding="utf-8")
     driver = webdriver.Chrome()

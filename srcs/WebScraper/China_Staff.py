@@ -4,11 +4,13 @@
 # @File: China_Staff.py
 # @Software: PyCharm
 
+import requests
 import sqlite3
 import re
 import urllib.request
 from bs4 import BeautifulSoup
 
+# Relative information to look through the URL
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:97.0) Gecko/20100101 Firefox/97.0'}
 
 urlNormalCollection = {"FOSE": "https://www.nottingham.edu.cn/en/science-engineering/people/academic.aspx",
@@ -21,11 +23,15 @@ facultyList = ["FOSE", "FHSS", "FOB", "CELE", "PGR"]
 urlHead = "https://www.nottingham.edu.cn"
 
 
+# Different faculty have different forms of teaching staffs' list
+# According to the faculty name, using different mathods to collect staff's information
 def get_staff():
-    con = sqlite3.connect("UUIS_database.db")
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
-    cur.execute("CREATE TABLE UNNC_Staff('Name' TEXT NOT NULL,'Course' TEXT NOT NULL,'URL' TEXT NOT NULL);")
+    # If this program needs to run twice, ignore the operation of creating a new table in order to store staff's information
+    # con = sqlite3.connect("UUIS_database_Testing.db")
+    # con.row_factory = sqlite3.Row
+    # cur = con.cursor()
+    # cur.execute("CREATE TABLE UNNC_Staff('Name' TEXT NOT NULL,'Course' TEXT NOT NULL,'URL' TEXT NOT NULL);")
+    # Cope with FOSE, FHSS, FOB Faculty
     for index in range(0, 3):
         fileName = str(facultyList[index])
         try:
@@ -35,6 +41,7 @@ def get_staff():
             analyse_link_staff_1(content, fileName)
         except BaseException as e:
             print(e)
+    # Cope with CELE Department
     fileName = str(facultyList[3])
     for index in range(1, 12):
         try:
@@ -44,16 +51,8 @@ def get_staff():
             analyse_link_staff_2(content, fileName)
         except BaseException as e:
             print(e)
-    fileName = str(facultyList[4])
-    try:
-        request = urllib.request.Request(url=urlSpecialCollection[fileName], headers=headers)
-        response = urllib.request.urlopen(request)
-        content = response.read().decode('utf-8')
-        analyse_link_staff_2(content, fileName)
-    except BaseException as e:
-        print(e)
 
-
+# Get staff information of FOSE, FHSS, FOB and insert them into database
 def analyse_link_staff_1(content, fileName):
     con = sqlite3.connect("UUIS_database.db")
     con.row_factory = sqlite3.Row
@@ -69,15 +68,18 @@ def analyse_link_staff_1(content, fileName):
         cur.execute("INSERT INTO UNNC_Staff ('Name','Course','URL') VALUES (?,?,?);", (staffName, fileName, target))
         con.commit()
         request = urllib.request.Request(url=target, headers=headers)
+        res = requests.get(target)
+        # Testing Code
+        print(staffName + " | Response status: " + str(res.status_code))
         response = urllib.request.urlopen(request)
         staffInfo = response.read().decode('utf-8')
         file = open(fileName + "_" + staffName + ".html", "w", encoding="utf-8")
         file.write(staffInfo)
         file.close()
 
-
+# Get the staff information of CELE Department
 def analyse_link_staff_2(content, fileName):
-    con = sqlite3.connect("UUIS_database.db")
+    con = sqlite3.connect("UUIS_database_Testing.db")
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     soup = BeautifulSoup(content, 'html.parser')
@@ -91,6 +93,9 @@ def analyse_link_staff_2(content, fileName):
         cur.execute("INSERT INTO UNNC_Staff ('Name','Course','URL') VALUES (?,?,?);", (staffName, fileName, target))
         con.commit()
         request = urllib.request.Request(url=target, headers=headers)
+        res = requests.get(target)
+        # Testing Code
+        print(staffName + " | Response status: " + str(res.status_code))
         response = urllib.request.urlopen(request)
         staffInfo = response.read().decode('utf-8')
         file = open(fileName + "_" + staffName + ".html", "w", encoding="utf-8")
