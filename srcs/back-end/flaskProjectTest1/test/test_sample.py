@@ -1,15 +1,9 @@
 import pytest
 import json
-import requests
-
-def test_home_page(client):
-    rv = client.get('/')
-    assert rv.status_code == 200
-    assert rv.data == b'ok'
 
 
 # This class is defined to test API '/faculty/course',
-# which take a course name as input,
+# which takes a course name as input,
 # and return the corresponding information of this course.
 class TestCouseInfo:
     _data_Civil_Engineering = {
@@ -527,6 +521,9 @@ class TestCouseInfo:
         rv = client.post(url, content_type='application/json', data=json.dumps(self._data_Statistics))
         assert rv.status_code == 200
 
+# This class is defined to test API '/ErrorReport',
+# which takes error message as input,
+# and save into database.
 class TestErrorReport:
     _data = {
         "error_message": "This is test error message"
@@ -557,6 +554,9 @@ class TestErrorReport:
         rv = client.post(url, content_type='application/json', data=json.dumps(self._data))
         rv.status_code == 200
 
+# This class is defined to test API '/faculty/course/module',
+# which takes a faculty name and a course name as input,
+# and return the module information of this course.
 class TestModuleInfo:
     _data_Civil_Engineering = {
         "facultyname": "FOSE",

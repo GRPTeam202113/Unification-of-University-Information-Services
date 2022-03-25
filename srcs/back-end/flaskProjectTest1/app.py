@@ -1,6 +1,8 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, jsonify
 import sqlite3
 from flask_cors import CORS
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -16,7 +18,8 @@ def course():
         con = sqlite3.connect("UUIS_database.db")
         con.row_factory = sqlite3.Row
         cur = con.cursor()
-        cur.execute("""SELECT Degree, Type, Duration, StartDate, Faculty, Model from UNNC_Course_Info where Name = ?""",(coursename,))
+        cur.execute("""SELECT Degree, Type, Duration, StartDate, Faculty, Model from UNNC_Course_Info where Name = ?""",
+                    (coursename,))
         rows = cur.fetchall()
 
         # Create six dics to store the returned inforamtion
