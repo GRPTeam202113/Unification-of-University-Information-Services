@@ -2,7 +2,7 @@
  * @Descripttion: 
  * @Author: Yongjing Qi
  * @Date: 2022-03-15 16:34:59
- * @LastEditTime: 2022-03-24 22:23:18
+ * @LastEditTime: 2022-04-03 14:24:48
  */
 'use strict'
 // Template version: 1.3.1
@@ -52,7 +52,7 @@ module.exports = {
     proxyTable: {
       '/api': {
         // target:'http://localhost:5000120.24.186.132:8081',
-        target:'http://120.24.186.132:8081',
+        target:'http://127.0.0.1:5000',
           changeOrigin:true,
             pathRewrite: {
                 '^/api': ''
